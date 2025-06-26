@@ -16,6 +16,18 @@ Each `.mdc` file represents conventions for a specific technology or stack (e.g.
 
 Files can be imported, linked, or embedded in project onboarding docs, documentation sites, or developer notes.
 
+## Rule Specificity and Application
+
+You can create more specific rule files for different contexts within a single technology. For example, you might have a general `react.mdc` file for overall React development, but a more focused `react-component.mdc` for files that exclusively define components.
+
+This allows you to provide more tailored context to the AI based on the task. An editor or tool can be configured to apply rules based on file patterns:
+
+- **`**/*.service.ts`** might use `nodejs.mdc` and `typescript.mdc`.
+- **`**/components/**/*.tsx`** might use `react-component.mdc`.
+- **A general `*.tsx` file** might fall back to the broader `react.mdc`.
+
+This approach ensures that the guidance you receive is highly relevant to the specific type of code you are writing, whether it's a UI component, a backend service, a database model, or a utility function.
+
 ## Versions
 
 If you need different versions of a technology, you can make a new file with the same name but with a different version number. eg. `react.mdc` and `react-19.mdc`. It might be useful to have a symlink to the latest version...
@@ -31,3 +43,6 @@ Add the following files:
 - [x] `typescript.mdc`
 - [x] `python.mdc`
 - [x] `nodejs.mdc`
+- [x] `ruby.mdc`
+- [x] `ruby-on-rails.mdc`
+- [x] `react-component.mdc`
