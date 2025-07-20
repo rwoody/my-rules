@@ -16,6 +16,40 @@ Each `.mdc` file represents conventions for a specific technology or stack (e.g.
 
 Files can be imported, linked, or embedded in project onboarding docs, documentation sites, or developer notes.
 
+## Pull my rules into `.cursor/rules`
+
+# Function to download .mdc files from rwoody/my-rules repo
+download_mdc_rules() {
+    local temp_dir=$(mktemp -d)
+    local target_dir=""
+
+    echo "Downloading rules from rwoody/my-rules..."
+
+    # Determine target directory
+    if [[ $(basename "$PWD") == "rules" ]]; then
+        target_dir="$PWD"
+    else
+        target_dir="$PWD/.cursor/rules"
+        mkdir -p "$target_dir"
+    fi
+
+    # Clone repo to temp directory
+    git clone https://github.com/rwoody/my-rules.git "$temp_dir" 2>/dev/null
+
+    if [ $? -eq 0 ]; then
+        # Copy all .mdc files to target directory
+        find "$temp_dir" -name "*.mdc" -exec cp {} "$target_dir" \;
+        echo "Successfully downloaded .mdc files to $target_dir"
+    else
+        echo "Error: Failed to download rules repository"
+    fi
+
+    # Cleanup
+    rm -rf "$temp_dir"
+}
+
+alias dlrules="download_mdc_rules"
+
 ## Rule Specificity and Application
 
 You can create more specific rule files for different contexts within a single technology. For example, you might have a general `react.mdc` file for overall React development, but a more focused `react-component.mdc` for files that exclusively define components.
