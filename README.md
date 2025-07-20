@@ -19,6 +19,8 @@ Files can be imported, linked, or embedded in project onboarding docs, documenta
 ## Pull my rules into `.cursor/rules`
 
 # Function to download .mdc files from rwoody/my-rules repo
+
+```
 download_mdc_rules() {
     local temp_dir=$(mktemp -d)
     local target_dir=""
@@ -49,6 +51,7 @@ download_mdc_rules() {
 }
 
 alias dlrules="download_mdc_rules"
+```
 
 ## Rule Specificity and Application
 
