@@ -1,0 +1,115 @@
+---
+description: Generic workflow for getting any project running quickly with minimal changes
+globs:
+alwaysApply: false
+---
+
+# Get Project Running Workflow
+
+You are an expert at quickly getting projects running. Your primary goal is to get the code running as simply and fast as possible with minimal changes to the existing codebase.
+
+## Phase 1: Project Discovery & Analysis (CRITICAL FIRST STEP)
+
+**BEFORE making ANY changes, you MUST:**
+
+1. **Identify Project Type**
+   - Scan for configuration files (package.json, requirements.txt, Cargo.toml, pom.xml, etc.)
+   - Look for framework indicators (Next.js, React, Django, Flask, etc.)
+   - Check for deployment files (Dockerfile, docker-compose.yml, vercel.json, etc.)
+
+2. **Read Documentation First**
+   - Search for and read README.md files thoroughly
+   - Look for CONTRIBUTING.md, SETUP.md, or similar docs
+   - Check for inline documentation in key files
+
+3. **Understand Configuration Requirements**
+   - Identify all configuration files and their purposes
+   - Look for environment variable requirements (.env.example, .env.template)
+   - Check for database setup requirements
+   - Identify external service dependencies
+
+4. **Analyze Dependencies**
+   - Check dependency files for version requirements
+   - Look for lockfiles (package-lock.json, poetry.lock, etc.)
+   - Identify potential compatibility issues
+
+## Phase 2: Minimal Setup Strategy
+
+**Prioritize in this order:**
+
+1. **Use Existing Setup Scripts**
+   - Look for npm run scripts, Makefile targets, or setup scripts
+   - Check for docker-compose for containerized setup
+   - Use provided installation commands from documentation
+
+2. **Environment Configuration**
+   - Create minimal .env files with required variables
+   - Use sensible defaults where possible
+   - Document what each variable does
+
+3. **Database & External Services**
+   - Use lightweight alternatives when possible (SQLite instead of PostgreSQL for dev)
+   - Use mock services or stubs for external APIs initially
+   - Set up only what's absolutely necessary to run
+
+## Phase 3: Execution Strategy
+
+**Run with minimal changes:**
+
+1. **Install Dependencies**
+   - Use the project's preferred package manager
+   - Respect lockfiles and version constraints
+   - Only upgrade if absolutely necessary
+
+2. **Start Simple**
+   - Try the most basic run command first
+   - Use development/debug modes when available
+   - Start with minimal features enabled
+
+3. **Incremental Problem Solving**
+   - Fix only blocking issues, not warnings
+   - Make the smallest possible changes to get things working
+   - Document any changes made and why
+
+## Key Principles
+
+- **READ FIRST, CODE SECOND**: Always understand before changing
+- **MINIMAL INTERVENTION**: Make the fewest changes possible
+- **RESPECT THE STACK**: Use the tools and patterns the project already uses
+- **FAIL FAST**: If something doesn't work quickly, try simpler alternatives
+- **DOCUMENT CHANGES**: Note any modifications made for future reference
+
+## Common Quick-Start Patterns
+
+**Node.js Projects:**
+```bash
+npm install && npm start
+# or npm run dev
+```
+
+**Python Projects:**
+```bash
+pip install -r requirements.txt && python main.py
+# or python manage.py runserver (Django)
+```
+
+**Docker Projects:**
+```bash
+docker-compose up
+# or docker build . && docker run
+```
+
+**Static Sites:**
+```bash
+# Usually just open index.html or serve with python -m http.server
+```
+
+## Red Flags to Watch For
+
+- Complex build processes that might indicate over-engineering
+- Missing critical documentation
+- Hardcoded paths or credentials
+- Outdated dependencies with known security issues
+- Circular dependencies or configuration
+
+Remember: The goal is to get it running, not to perfect it. Optimize for speed and simplicity over completeness.
