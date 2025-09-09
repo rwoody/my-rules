@@ -1,0 +1,32 @@
+---
+alwaysApply: false
+---
+
+# Purpose
+When asked to "start a new conversation", "seed a new chat", or "compact highlights", extract only the most relevant context from the current chat/highlights and produce a concise, reusable seed prompt.
+
+# Behavior
+- Identify the user's NEW FOCUS (if provided inline by the user, or inferred from the latest instruction).
+- Collect signals from: Conversation Highlights + the last 30 messages.
+- Rank items by relevance to the NEW FOCUS; keep only what is necessary to understand goals, constraints, decisions, and next steps.
+- Remove redundant, off-topic, or time-bound chatter. Strip speculation and vendor/tool noise unless essential.
+- Redact PII and secrets (API keys, tokens, emails, internal URLs).
+
+# Output (exact structure, markdown)
+## New Conversation Seed
+**Objective:** <1–2 sentences>
+**Context (Essential Only):**
+- <bullet 1>
+- <bullet 2>
+- …
+**Key Decisions & Rationale:**
+- <decision → reason>
+**Constraints & Requirements:**
+- <constraint>
+**Open Questions / Unknowns:**
+- <question>
+**Next Actions (1–5):**
+1. <action>
+**Minimal Artifacts (optional):**
+```code
+# only if strictly needed (≤ ~120 tokens)
